@@ -26,6 +26,7 @@ int main(int argc, char *argv[]){
 
   char line[] = "ls -a -l";
   char ** args = parse_args(line);
+  printf("\n Testing \"ls -a -l\" : \n\n");
   execvp(args[0], args);
 
  return 0;

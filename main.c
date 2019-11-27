@@ -5,25 +5,30 @@
 
 
 char ** parse_args( char * line ){
-  char ** line = calloc(5, sizeof(*char));
-  int index = 0;
-  char * sep = line;
-  while (strsep(
 
+  char ** args = calloc(100, sizeof(char *));
+  char * sep;
+  int i = 0;
 
+  while ( line != NULL ){
+    sep = strsep(&line, " ");
+    args[i] = calloc(10, sizeof(char *));
+    args[i] =  sep;
+    i++;
+}
+
+  args[i] = NULL;
+  return args;
 }
 
 
-int main(int argc. char *argv[]){
-  
-  /*
-  char line[100] = "woah-this-is-cool";
-  char *s1 = line;
-  printf ("[%s]\n", strsep(&s1, "-"));
-  printf("[%s]\n", s1);
-  return 0;
-  */
+int main(int argc, char *argv[]){
 
+  char line[] = "ls -l -a";
+  char ** args = parse_args(line);
+  execvp(args[0], args);
+
+ return 0;
   
 }
 
